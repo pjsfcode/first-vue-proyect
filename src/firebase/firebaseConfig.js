@@ -1,11 +1,5 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
 import { initializeApp } from "firebase/app";
-import App from "./App.vue";
-import router from "./router/router.js";
-
-const app = createApp(App);
-const pinia = createPinia();
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyAkcoVOTcppwH0RUtGvoztBcF_aH2Ohsdo",
@@ -16,8 +10,7 @@ const firebaseConfig = {
 	appId: "1:214602850638:web:56d531c1c20e4ac8b73e1f",
 };
 
-app.use(pinia);
-app.use(router);
-app.use(firebaseConfig)
+initializeApp(firebaseConfig);
+const auth = getAuth();
 
-app.mount("#app");
+export { auth };
